@@ -1,0 +1,16 @@
+body {
+    background-color: #a09b9b;
+}
+
+.square-style {
+  border-style: solid;
+  padding-bottom: 80px;
+}
+
+.light-square{
+  background-color: #f1f4f4e8;
+}
+
+.dark-square {
+ background-color: #696969;
+}
