@@ -9,7 +9,29 @@
 - Columns: 12 grid layout:  12 / 8 = 1.5
 
 
-## JS logic 
+## Pseudocode
+
+HTML / CSS 
+1. Add pieces to the board 
+- add some space between the board and the top of the screen. 
+- Add a class for a currently selected piece. The CSS will either have a brighter or a darker color than that of the available move square color. 
+- Add a class for available moves. Start with a bright color, most likely a light green, or blue. 
+
+2. A white-piece and a black-piece class will be needed to differentiate the pieces, allowing for manipulation in the JS file. 
+- Active and inactive classes will be needed for switching what pieces can be selected based on current game turn. 
+
+3. A layout for a move log will eventually be needed once the game logic is sufficiently advanced.
+- display current turn number.
+- log moves in proper algebriac notation. 
+- possibly have an indicator which piece color's turn it currently is. 
+
+
+---
+JavaScript  
+1. 
+
+
+## JS logic general ideas 
 
 ### Chess Pieces 
 
