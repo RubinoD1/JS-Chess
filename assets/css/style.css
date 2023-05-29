@@ -1,10 +1,12 @@
 body {
     background-color: #a09b9b;
+    
 }
 
 .square-style {
-  border-style: solid;
-  padding-bottom: 80px;
+  width: 120px;
+  height: 120px;
+  border:  solid black; 
 }
 
 .light-square{
@@ -13,4 +15,18 @@ body {
 
 .dark-square {
  background-color: #696969;
+}
+
+.notation{
+  vertical-align: text-top;
+  text-align: left;
+}
+
+.piece {
+  max-width: 100%;
+  height: 90%;
+  padding-top: 10px;
+  padding-left: 20px;
+  
+  
 }
