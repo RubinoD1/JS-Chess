@@ -1,8 +1,18 @@
+![Chess app banner](/assets/images/JS%20Chess%20banner.png)
+
+GitHub repo: https://github.com/RubinoD1/JS-Chess
+
+GitHub live page: 
+
+
+
+
+
 ## Design Notes 
 
 ### Chess board dimension basics
 
-![Chess board layout](/assets/images/board%20layout%20reference.jpg)
+![Chess board layout](/assets/images/Design%20ideas/board%20layout%20reference.jpg)
 
 - The Chess board is made up of an 8x8 grid. This grid results in 64 alternating colored squares, 32 light squares and 32 dark.
 
@@ -35,7 +45,7 @@ JavaScript
 
 ### Chess Pieces 
 
-- Algebraic notation
+- Algebraic notation 
 
 #### Selecting a piece 
 
