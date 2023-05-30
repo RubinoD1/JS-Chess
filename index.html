@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Chess
+       JS Chess
     </title>
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!-- CSS file -->
     <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- favicon sample link -->
-    <!--<link rel="icon" type="image/x-icon" href="/images/favicon.ico">-->
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
 </head>
 <body>
 
@@ -20,35 +21,35 @@
         <div class="row">
           <div class="col square-style light-square">
             <b>A8</b>
-            <img class=" piece" src="./assets/images/blackRook.png">
+            <img id="rook-a8" class=" piece" src="./assets/images/blackRook.png">
           </div>
           <div class="col square-style dark-square">
             <b>B8</b>
-            <img class=" piece" src="./assets/images/blackKnight.png">
+            <img id="knight-b8" class=" piece" src="./assets/images/blackKnight.png">
           </div>
           <div class="col square-style light-square">
             <b>C8</b>
-            <img class=" piece" src="./assets/images/blackBishop.png">
+            <img id="bishop-c8" class=" piece" src="./assets/images/blackBishop.png">
           </div>
           <div class="col square-style dark-square">
             <b>D8</b>
-            <img class=" piece" src="./assets/images/blackQueen.png">
+            <img id="queen-d8" class=" piece" src="./assets/images/blackQueen.png">
           </div>
           <div class="col square-style light-square">
             <b>E8</b>
-            <img class=" piece" src="./assets/images/blackKing.png">
+            <img id="king-e8" class=" piece" src="./assets/images/blackKing.png">
           </div>
           <div class="col square-style dark-square">
             <b>F8</b>
-            <img class=" piece" src="./assets/images/blackBishop.png">
+            <img id="bishop-f8" class=" piece" src="./assets/images/blackBishop.png">
           </div>
           <div class="col square-style light-square">
             <b>G8</b>
-            <img class=" piece" src="./assets/images/blackKnight.png">
+            <img id="knight-g8" class=" piece" src="./assets/images/blackKnight.png">
           </div>
           <div class="col square-style dark-square">
             <b>H8</b>
-            <img class=" piece" src="./assets/images/blackRook.png">
+            <img id="rook-h8" class=" piece" src="./assets/images/blackRook.png">
           </div>
         </div>
       </div>
@@ -58,35 +59,35 @@
         <div class="row">
           <div class="col square-style dark-square">
             <b>A7</b>
-            <img class=" piece" src="./assets/images/blackPawn.png">
+            <img id="pawn-a7" class=" piece" src="./assets/images/blackPawn.png">
           </div>
           <div class="col square-style light-square">
             <b>B7</b>
-            <img class=" piece" src="./assets/images/blackPawn.png">
+            <img id="pawn-b7" class=" piece" src="./assets/images/blackPawn.png">
           </div>
           <div class="col square-style dark-square">
             <b>C7</b>
-            <img class=" piece" src="./assets/images/blackPawn.png">
+            <img id="pawn-c7" class=" piece" src="./assets/images/blackPawn.png">
           </div>
           <div class="col square-style light-square">
             <b>D7</b>
-            <img class=" piece" src="./assets/images/blackPawn.png">
+            <img id="pawn-d7" class=" piece" src="./assets/images/blackPawn.png">
           </div>
           <div class="col square-style dark-square">
             <b>E7</b>
-            <img class=" piece" src="./assets/images/blackPawn.png">
+            <img id="pawn-e7" class=" piece" src="./assets/images/blackPawn.png">
           </div>
           <div class="col square-style light-square">
             <b>F7</b>
-            <img class=" piece" src="./assets/images/blackPawn.png">
+            <img id="pawn-f7" class=" piece" src="./assets/images/blackPawn.png">
           </div>
           <div class="col square-style dark-square">
             <b>G7</b>
-            <img class=" piece" src="./assets/images/blackPawn.png">
+            <img id="pawn-g7" class=" piece" src="./assets/images/blackPawn.png">
           </div>
           <div class="col square-style light-square">
             <b>H7</b>
-            <img class=" piece" src="./assets/images/blackPawn.png">
+            <img id="pawn-h7" class=" piece" src="./assets/images/blackPawn.png">
           </div>
         </div>
       </div>
@@ -216,35 +217,35 @@
         <div class="row">
           <div class="col square-style light-square">
             <b>A2</b>
-            <img class=" piece" src="./assets/images/whitePawn.png">
+            <img id="pawn-a2" class=" piece" src="./assets/images/whitePawn.png">
           </div>
           <div class="col square-style dark-square">
             <b>B2</b>
-            <img class=" piece" src="./assets/images/whitePawn.png">
+            <img id="pawn-b2" class=" piece" src="./assets/images/whitePawn.png">
           </div>
           <div class="col square-style light-square">
             <b>C2</b>
-            <img class=" piece" src="./assets/images/whitePawn.png">
+            <img id="pawn-c2" class=" piece" src="./assets/images/whitePawn.png">
           </div>
           <div class="col square-style dark-square">
             <b>D2</b>
-            <img class=" piece" src="./assets/images/whitePawn.png">
+            <img id="pawn-d2" class=" piece" src="./assets/images/whitePawn.png">
           </div>
           <div class="col square-style light-square">
             <b>E2</b>
-            <img class=" piece" src="./assets/images/whitePawn.png">
+            <img id="pawn-e2" class=" piece" src="./assets/images/whitePawn.png">
           </div>
           <div class="col square-style dark-square">
             <b>F2</b>
-            <img class=" piece" src="./assets/images/whitePawn.png">
+            <img id="pawn-f2" class=" piece" src="./assets/images/whitePawn.png">
           </div>
           <div class="col square-style light-square">
             <b>G2</b>
-            <img class=" piece" src="./assets/images/whitePawn.png">
+            <img id="pawn-g2" class=" piece" src="./assets/images/whitePawn.png">
           </div>
           <div class="col square-style dark-square">
             <b>H2</b>
-            <img class=" piece" src="./assets/images/whitePawn.png">
+            <img id="pawn-h2" class=" piece" src="./assets/images/whitePawn.png">
           </div>
         </div>
       </div>
@@ -254,35 +255,35 @@
         <div class="row">
           <div class="col square-style dark-square">
             <b>A1</b>
-            <img class=" piece" src="./assets/images/whiteRook.png">
+            <img id="rook-a1" class=" piece" src="./assets/images/whiteRook.png">
           </div>
           <div class="col square-style light-square">
             <b>B1</b>
-            <img class=" piece" src="./assets/images/whiteKnight.png">
+            <img id="knight-b1" class=" piece" src="./assets/images/whiteKnight.png">
           </div>
           <div class="col square-style dark-square">
             <b>C1</b>
-            <img class=" piece" src="./assets/images/whiteBishop.png">
+            <img id="bishop-c1" class=" piece" src="./assets/images/whiteBishop.png">
           </div>
           <div class="col square-style light-square">
             <b>D1</b>
-            <img class=" piece" src="./assets/images/whiteQueen.png">
+            <img id="queen-d1" class=" piece" src="./assets/images/whiteQueen.png">
           </div>
           <div class="col square-style dark-square">
             <b>E1</b>
-            <img class=" piece" src="./assets/images/whiteKing.png">
+            <img id="king-e1" class=" piece" src="./assets/images/whiteKing.png">
           </div>
           <div class="col square-style light-square">
             <b>F1</b>
-            <img class=" piece" src="./assets/images/whiteBishop.png">
+            <img id="bishop-f1" class=" piece" src="./assets/images/whiteBishop.png">
           </div>
           <div class="col square-style dark-square">
             <b>G1</b>
-            <img class=" piece" src="./assets/images/whiteKnight.png">
+            <img id="knight-g1" class=" piece" src="./assets/images/whiteKnight.png">
           </div>
           <div class="col square-style light-square">
             <b>H1</b>
-            <img class=" piece" src="./assets/images/whiteRook.png">
+            <img id="rook-h1" class=" piece" src="./assets/images/whiteRook.png">
           </div>
         </div>
       </div>
