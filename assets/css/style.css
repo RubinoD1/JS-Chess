@@ -10,7 +10,8 @@ body {
 }
 
 .light-square{
-  background-color: #f1f4f4e8;
+  background-color: #f1f4f4e8;   
+  
 }
 
 .dark-square {
@@ -27,6 +28,5 @@ body {
   height: 90%;
   padding-top: 10px;
   padding-left: 20px;
-  
-  
 }
+

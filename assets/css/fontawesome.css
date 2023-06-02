@@ -1,0 +1,35 @@
+body {
+  background-color: #a09b9b;
+}
+
+.square-style {
+  width: 120px;
+  height: 120px;
+  border:  solid black; 
+}
+
+.dark-square {
+ background-color: #696969;
+}
+
+.notation{
+  vertical-align: text-top;
+  text-align: left;
+}
+
+.light-square{
+  /*background-color: #f1f4f4e8;   original: changed for font-awesome*/
+  background-color: #c4b853;
+}
+  
+.piece {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*font-size:4em;*/font-size:4em;
+  vertical-align: middle;
+}
+
+.white {
+  color: #ffffff;
+}
