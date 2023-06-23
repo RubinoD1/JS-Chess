@@ -15,6 +15,19 @@ body {
     text-align: center;
 }
 
+.promotion-pieces {
+    margin:5px;
+}
+
+.confirm {
+  margin-top: 10px;
+  margin-inline: auto;
+  display: flex;
+  font-weight: bold;
+}
+
+
+
 /* either create the promotion box in JS, 
 or have it hidden/visible depending on need */
 .hidden {
