@@ -9,10 +9,12 @@ body {
     left: 50%;
     margin-top: -50px;
     margin-left: -100px;
+    z-index: 999;/* sets the promotion box to stack over other div elements */
 }
 
 #promotion-title {
     text-align: center;
+    text-decoration: underline;
 }
 
 .promotion-pieces {
