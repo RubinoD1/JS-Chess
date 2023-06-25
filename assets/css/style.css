@@ -50,7 +50,41 @@ body {
 }
 .disable-box {
   pointer-events: none;
-  filter: blur(1px);
+  /* filter: blur(1px);  */
 }
 
-/* 440px breakpoint for board needs adjusting  */
+
+
+
+/* 767px breakpoint for board needs adjusting --- board is stretched */
+/* Media break points */
+@media screen and (max-width: 768px) {
+  .square-style {
+    width: 100px;
+    height: 100px;
+    
+  }
+}
+
+/* 539px breakpoint for board needs adjusting --- board is squeshed */
+@media screen and (max-width: 539px) {
+  .square-style {
+    width: auto;
+    height: 60px;
+  }
+  .img-fluid {
+    width: auto;
+    margin: auto;
+    padding-bottom: 15px;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+  }
+
+
+}
+
+
+
+/* 440px breakpoint for board needs adjusting -- rows break out of 8x8 grid */
+

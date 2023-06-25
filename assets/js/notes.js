@@ -124,11 +124,13 @@ var chessPieces = [
     var name = selectedPiece.getAttribute('name');
     let _isBlack = isBlack(selectedPiece);
     var currentPosition = parseInt(selectedPiece.getAttribute('position'));
+    
   
     switch (name) {
       case 'pawn':
         let counter = _isBlack ? 1 : -1;
         let moves = currentPosition + 8 * counter - 1;
+        
   
         // the pawn is at the start location / has not moved
         if (
