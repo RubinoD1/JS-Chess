@@ -55,36 +55,33 @@ body {
 
 
 
-
-/* 767px breakpoint for board needs adjusting --- board is stretched */
 /* Media break points */
+/* 768px breakpoint for fixing board stretching */
 @media screen and (max-width: 768px) {
   .square-style {
-    width: 100px;
-    height: 100px;
-    
+    height:100px;
+  }
+
+  .img-fluid { /*adjusts the chess piece images */
+    height: 80%;
   }
 }
 
-/* 539px breakpoint for board needs adjusting --- board is squeshed */
+/* 539px breakpoint for fixing board squishing */
 @media screen and (max-width: 539px) {
   .square-style {
-    width: auto;
-    height: 60px;
+    height:80px;
   }
-  .img-fluid {
-    width: auto;
-    margin: auto;
-    padding-bottom: 15px;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-  }
-
-
 }
 
+/* 443px breakpoint for board needs adjusting -- rows break out of 8x8 grid and img issues */
+@media screen and (max-width: 443px) {
+  .square-style {
+    width: 35px;
+    height: 81px;
+  }
 
-
-/* 440px breakpoint for board needs adjusting -- rows break out of 8x8 grid */
-
+  .img-fluid { 
+    height: 80%; /*temp placeholder*/
+  }
+}
