@@ -1,14 +1,15 @@
-body {
+body { /* TEMP REMOVE: once styling is done on promotion box */
     background-color: #9e9e9e;
 }
 
 #promotion {
-    background-color: #4797bc;
+    background-color: #7ab4cf;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-top: -50px;
     margin-left: -100px;
+    padding: 5px;
     z-index: 999;/* sets the promotion box to stack over other div elements */
 }
 
@@ -17,12 +18,10 @@ body {
     text-decoration: underline;
 }
 
-.promotion-pieces {
-    margin:5px;
-}
+
 
 .confirm {
-  margin-top: 10px;
+  margin-top: 4px;
   margin-inline: auto;
   display: flex;
   font-weight: bold;
@@ -35,3 +34,7 @@ or have it hidden/visible depending on need */
 .hidden {
     visibility:hidden;
 }
+
+
+/* 340px breakpoint for centering promotion box */
+
