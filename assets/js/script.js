@@ -101,6 +101,7 @@ var onSelect = (e) => {
 
       current.classList.remove(isBlack(current) ? 'black' : 'white');
       current.classList.add(isBlack(isSelected[0]) ? 'black' : 'white');
+      isSelected[0].setAttribute('name', '');
     }
 
     enableBoxes();
@@ -156,8 +157,16 @@ var moves = (selectedPiece) => {
       maxMoves = 1;
       if (allCheckers[moves].getAttribute('name') === '')
         allCheckers[moves].classList.add('possible-moves');
-
       disableBoxes();
+      break;
+
+    case 'rook':
+      verticalUp(currentPosition, _isBlack);
+      verticalDown(currentPosition, _isBlack);
+      horizontalRight(currentPosition, _isBlack);
+      horizontalLeft(currentPosition);
+      disableBoxes();
+      break;
   }
 };
 
@@ -184,4 +193,93 @@ var enableBoxes = () => {
     if (row.classList.contains('disable-box'))
       row.classList.remove('disable-box');
   });
+};
+
+// Vertical upward movement
+var verticalUp = (currentPosition, _isBlack) => {
+  let moves = currentPosition - 8;
+  // Loop till the top point of the current row
+  while (moves >= currentPosition % 8) {
+    // If the blox is empty
+    if (allCheckers[moves - 1].getAttribute('name') === '')
+      allCheckers[moves - 1].classList.add('possible-moves');
+    else {
+      // checking for opponent
+      if (isBlack(allCheckers[moves - 1]) != _isBlack) {
+        allCheckers[moves - 1].classList.add('kill');
+      }
+      // if there is no space for movement break the loop
+      break;
+    }
+    moves -= 8;
+  }
+};
+
+// Vertical down movement
+var verticalDown = (currentPosition, _isBlack) => {
+  let moves = 1;
+  // Loop till the end point of the current row
+  while (currentPosition + 8 * moves <= 64) {
+    // If the blox is empty
+    if (
+      allCheckers[currentPosition + 8 * moves - 1].getAttribute('name') === ''
+    )
+      allCheckers[currentPosition + 8 * moves - 1].classList.add(
+        'possible-moves'
+      );
+    else {
+      // checking for opponent
+      if (isBlack(allCheckers[currentPosition + 8 * moves - 1]) != _isBlack) {
+        allCheckers[currentPosition + 8 * moves - 1].classList.add('kill');
+      }
+      // if there is no space for movement break the loop
+      break;
+    }
+    moves++;
+  }
+};
+
+// Horizontal right
+var horizontalRight = (currentPosition, _isBlack) => {
+  let moves = currentPosition + 1;
+  // Loop till the end point of the current row
+  while (
+    currentPosition % 8 &&
+    moves < currentPosition + (8 - (currentPosition % 8))
+  ) {
+    // If the blox is empty
+    if (allCheckers[moves].getAttribute('name') === '')
+      allCheckers[moves].classList.add('possible-moves');
+    else {
+      // checking for opponent
+      if (isBlack(allCheckers[moves]) != _isBlack) {
+        allCheckers[moves].classList.add('kill');
+      }
+      break;
+    }
+    // if there is no space for movement break the loop
+    moves++;
+  }
+};
+
+// Horizontal left
+var horizontalLeft = (currentPosition, _isBlack) => {
+  let moves = currentPosition - 1;
+
+  // Loop till the starting point of the current row
+  while (moves >= currentPosition - ((currentPosition % 8) - 1)) {
+    // If the blox is empty
+    if (allCheckers[moves - 1].getAttribute('name') === '')
+      allCheckers[moves - 1].classList.add('possible-moves');
+    else {
+      // checking for opponent
+      if (isBlack(allCheckers[moves - 1]) != _isBlack) {
+        allCheckers[moves - 1].classList.add('kill');
+      }
+
+      // if there is no space for movement break the loop
+      break;
+    }
+    moves--;
+  }
 };
