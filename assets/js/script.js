@@ -167,6 +167,95 @@ var moves = (selectedPiece) => {
       horizontalLeft(currentPosition);
       disableBoxes();
       break;
+
+    case 'knight':
+      let left_Upper_Value = _isBlack
+        ? currentPosition - ((currentPosition % 8) - 1) + 16
+        : currentPosition - ((currentPosition % 8) - 1) - 16;
+      let possible_left_position = _isBlack
+        ? currentPosition + 16 - 1
+        : currentPosition - 16 - 1;
+
+      let right_Upper_Value = _isBlack
+        ? currentPosition + ((currentPosition % 8) + 1) + 16
+        : currentPosition + ((currentPosition % 8) + 1) - 16;
+
+      let possible_right_position = _isBlack
+        ? currentPosition + 16 + 1
+        : currentPosition - 16 + 1;
+
+      // Left side movement
+      if (
+        possible_left_position >= 0 &&
+        possible_left_position <= 64 &&
+        possible_left_position >= left_Upper_Value
+      ) {
+        move_Kill(possible_left_position, isBlack);
+      }
+
+      // Right side movement
+      if (
+        possible_right_position >= 0 &&
+        possible_right_position <= 64 &&
+        possible_right_position <= right_Upper_Value
+      ) {
+        if (
+          allCheckers[possible_right_position - 1].getAttribute('name') === ''
+        ) {
+          allCheckers[possible_right_position - 1].classList.add(
+            'possible-moves'
+          );
+        } else if (
+          isBlack(allCheckers[possible_right_position - 1]) != _isBlack
+        ) {
+          allCheckers[possible_right_position - 1].classList.add('kill');
+        }
+      }
+
+      // side movement
+      let right_side_up = currentPosition + 2 - 8;
+      let right_side_down = currentPosition + 2 + 8;
+      let left_side_up = currentPosition - 2 - 8;
+      let left_side_down = currentPosition - 2 + 8;
+
+      // Right upper side movement
+      if (
+        right_side_up > 0 &&
+        right_side_up < 64 &&
+        right_side_up <= currentPosition + 1 + (currentPosition % 8) - 8
+      ) {
+        move_Kill(right_side_up, _isBlack);
+      }
+
+      // Right bottom side movement
+      if (
+        right_side_down > 0 &&
+        right_side_down < 64 &&
+        right_side_up <= currentPosition + 1 + (currentPosition % 8) + 8
+      ) {
+        move_Kill(right_side_down, _isBlack);
+      }
+
+      // Left upper side movement
+      if (
+        left_side_up > 0 &&
+        left_side_up < 64 &&
+        left_side_up >= currentPosition + 1 - (currentPosition % 8) - 8
+      ) {
+        move_Kill(left_side_up, _isBlack);
+      }
+
+      // Left bottom side movement
+      if (
+        left_side_down > 0 &&
+        left_side_down < 64 &&
+        left_side_down >= currentPosition + 1 - (currentPosition % 8) + 8
+      ) {
+        move_Kill(left_side_down, _isBlack);
+      }
+
+      disableBoxes();
+      break;
   }
 };
 
@@ -281,5 +370,14 @@ var horizontalLeft = (currentPosition, _isBlack) => {
       break;
     }
     moves--;
+  }
+};
+
+// Move/Kills
+var move_Kill = (move, _isBlack) => {
+  if (allCheckers[move - 1].getAttribute('name') === '') {
+    allCheckers[move - 1].classList.add('possible-moves');
+  } else if (isBlack(allCheckers[move - 1]) != _isBlack) {
+    allCheckers[move - 1].classList.add('kill');
   }
 };
