@@ -5,7 +5,7 @@ GitHub repo: https://github.com/RubinoD1/JS-Chess
 GitHub live page: 
 
 
-# Under Construction
+# In Development 
 
 ![Construction Image](/assets/images/Design%20ideas/pathetic%20cat%20meme.jpg)
 
