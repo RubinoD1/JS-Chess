@@ -47,7 +47,7 @@ body {
 @media screen and (max-width: 520px) {
   .square-style {
    width: 30px;
-   height: 100px;
+   height: 63px;
   }
 
   .piece {
