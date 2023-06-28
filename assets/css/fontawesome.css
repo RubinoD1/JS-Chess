@@ -35,4 +35,22 @@ body {
 }
 
 
-/* 758px below adjust board layout */
+/* 768px below adjust board layout */
+/*8 x 8 board layout is breaking*/  
+@media screen and (max-width: 768px) {
+ .square-style {
+  width: 60px;
+  
+ }
+}
+
+@media screen and (max-width: 520px) {
+  .square-style {
+   width: 30px;
+   height: 100px;
+  }
+
+  .piece {
+    font-size: 2em;
+  }
+ }

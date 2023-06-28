@@ -31,10 +31,9 @@ body {
 */
 
 .img-fluid {
-  width: auto;
-  margin: auto;
+  
   padding-bottom: 15px;
-  height: 90%;
+  
   display: flex;
   justify-content: center;
 }
