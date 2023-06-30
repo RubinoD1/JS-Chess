@@ -1,5 +1,10 @@
 body {
-  background-color: #a09b9b;
+  background-color: #312c2c;
+}
+
+.board {
+  float: left;
+  width:65%;
 }
 
 .square-style {
@@ -9,7 +14,7 @@ body {
 }
 
 .dark-square {
- background-color: #696969;
+ background-color: #21837a;
 }
 
 .notation{
@@ -19,7 +24,7 @@ body {
 
 .light-square{
   /*background-color: #f1f4f4e8;   original: changed for font-awesome*/
-  background-color: #c4b853;
+  background-color: #c4b853e8;
 }
   
 .piece {
@@ -33,6 +38,13 @@ body {
 .white {
   color: #ffffff;
 }
+
+.log {
+  float: right;
+  width:35%;
+  
+}
+
 
 
 /* 768px below adjust board layout */
