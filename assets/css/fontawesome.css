@@ -47,28 +47,22 @@ body {
 }
 
 .bg {
- /*padding-top: 125px; */  
  top:50%;
  margin-top: -100px;
  position:fixed;
  z-index: -1;
  opacity: 0.2;
- /*left: 50%; */ 
  width: 35%; 
- /*background-position: 0 0; */  
-  
  background-repeat:no-repeat; 
- 
-
-   /* Position and center the image to scale nicely on all screens 
-   background-image: url("../images/logos/log-bg.png");
-   height: 100%; 
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
-   position: relative;
-  */
 }
+
+
+.controls {
+  text-align: center;
+}
+
+
+
 
 
 
