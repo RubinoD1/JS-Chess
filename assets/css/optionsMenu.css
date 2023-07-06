@@ -1,0 +1,46 @@
+/* temp -- REMOVE WHEN DONE STYLING */
+body {
+    background-color: #312c2c;
+}
+
+#options-window {
+    background-color: #7ab4cf;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+    padding: 5px;
+    z-index: 998;/* sets the promotion box to stack over other div elements */
+}
+
+#options-title {
+    display:flex;
+    float: left;
+    text-decoration:underline;
+}
+
+/* close icon */
+.close {
+    display: flex;
+    float: right;
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+/* Seperated until dropdown menus are working */
+  
+  /* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display:block;
+} 
