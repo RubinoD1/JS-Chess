@@ -4,7 +4,7 @@ body {
 }
 
 #options-window {
-    background-color: #7ab4cf;
+    background-color: #aab5ba;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -28,12 +28,19 @@ body {
     margin-left: 10px;
 }
 
+.menu-btns {
+    padding: 10px 20px 10px 20px;
+}
+
+.settings-confirm {
+    margin-top: 30px;
+    justify-content: center;
+    display: flex;
+}
 
 
 
-
-
-
+/* TEMP REMOVE IF JS DROPDOWN MENU IS NOT USED */
 /* Seperated until dropdown menus are working */
   
   /* Dropdown Content (Hidden by Default) */

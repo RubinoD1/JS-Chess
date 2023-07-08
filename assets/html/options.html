@@ -22,19 +22,21 @@
 <body>
   
   <!-- options menu --> 
-  <div id="options-window" class="border border-3 border-primary cointainer">
+  <div id="options-window" class="border border-3 border-primary cointainer rounded-top">
       <!-- close button --have at the top right of the box, inside border -->
       <button type="button" class="close btn btn-danger" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     <!-- options title have centered middle top of box --inside border -->
-    <h1 id="options-title" class="text-center fa-solid fa-gear">
+    <h2 id="options-title" class="text-center fa-solid fa-gear">
         Settings
-    </h1>
+    </h2>
     <!-- break to force new line -->
     <br>
+    <img src="../images/Design ideas/200x200 sample.png" class=" rounded float-end img-thumbnail" alt="..."> 
+    
     <!-- menu option 1: side select --experiment with layouts, try having everything vertical with a drop down menu -->
-    <div class="btn-group-vertical gap-2" role="group" aria-label="...">
+    <div class="btn-group-vertical gap-2 menu-btns " role="group" aria-label="...">
       
       <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         Side Select
@@ -53,7 +55,36 @@
           <li><a class="dropdown-item" href="#">Coffee </a></li>
           <li><a class="dropdown-item" href="#">Mint </a></li>
         </ul>
+
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Timer
+        </button>
+         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Unlimited (Default)</a></li>
+          <li><a class="dropdown-item" href="#">15 mins </a></li>
+          <li><a class="dropdown-item" href="#">30 mins </a></li>
+          <li><a class="dropdown-item" href="#">45 mins </a></li>
+          <li><a class="dropdown-item" href="#">1 hr </a></li>
+         </ul>
+
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Notation
+        </button>
+         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Inside (default)</a></li>
+          <li><a class="dropdown-item" href="#">Border</a></li>
+          <li><a class="dropdown-item" href="#">None</a></li>
+         </ul>
     </div>
+    
+       <br>
+
+       <div class="btn-group btn-group-md gap-2 settings-confirm" role="group" aria-label="...">
+        <button type="button" class="btn btn-secondary">Cancel</button>
+        
+        <button type="button" class="btn btn-warning">Save</button>
+      </div>
+
   </div>
 
 
