@@ -3,8 +3,8 @@ var chessPieces = [
   'rook',
   'knight',
   'bishop',
-  'queen',
   'king',
+  'queen',
   'bishop',
   'knight',
   'rook',
@@ -68,6 +68,7 @@ var chessPieces = [
 
 // Selecting all Checkers
 var allCheckers = document.querySelectorAll('#chessBoard .row .square-style');
+var _turn = 'white';
 
 // Click Event function
 var onSelect = (e) => {
@@ -76,9 +77,16 @@ var onSelect = (e) => {
   var isSelected = Array.from(allCheckers).filter((row) =>
     row.classList.contains('selected')
   );
+
+  // If the selected cell is not blank
   if (current.getAttribute('name') !== '' && isSelected.length < 1) {
-    current.classList.add('selected');
-    moves(current);
+    if (current.classList.contains(_turn)) {
+      current.classList.add('selected');
+      moves(current, true);
+    } else {
+      window.alert(_turn + " turn to play")
+    }
+
   } else {
     // Removing the classes from the selected pieces.
     document
@@ -88,7 +96,7 @@ var onSelect = (e) => {
       });
 
     // If the new position and the old position are not same
-    if (
+    if (isSelected.length > 0 &&
       current.getAttribute('position') !==
       isSelected[0].getAttribute('position')
     ) {
@@ -102,8 +110,12 @@ var onSelect = (e) => {
       current.classList.remove(isBlack(current) ? 'black' : 'white');
       current.classList.add(isBlack(isSelected[0]) ? 'black' : 'white');
       isSelected[0].setAttribute('name', '');
+      winOrLose();
+      moves(current, false);
+      _turn = turns(_turn);
+    } else {
+      _turn = _turn
     }
-
     enableBoxes();
   }
 };
@@ -121,7 +133,7 @@ Array.from(allCheckers).map((row, index) => {
 });
 
 // Valid moves
-var moves = (selectedPiece) => {
+var moves = (selectedPiece, _isFinalPosition) => {
   var name = selectedPiece.getAttribute('name');
   let _isBlack = isBlack(selectedPiece);
   var currentPosition = parseInt(selectedPiece.getAttribute('position'));
@@ -136,7 +148,7 @@ var moves = (selectedPiece) => {
         ((currentPosition >= 9 && currentPosition <= 16) ||
           (currentPosition >= 49 && currentPosition <= 56)) &&
         allCheckers[moves + 8 * counter].getAttribute('name') === '' &&
-        allCheckers[moves].getAttribute('name') === ''
+        allCheckers[moves].getAttribute('name') === '' && _isFinalPosition
       ) {
         allCheckers[moves + 8 * counter].classList.add('possible-moves');
       }
@@ -145,17 +157,28 @@ var moves = (selectedPiece) => {
         allCheckers[moves - 1].getAttribute('name') != '' &&
         isBlack(allCheckers[moves - 1]) != _isBlack
       ) {
-        allCheckers[moves - 1].classList.add('kill');
+        if (allCheckers[moves + 1].getAttribute('name') === 'king' && !_isFinalPosition) {
+          window.alert("check");
+          allCheckers[moves + 1].classList.add('kill');
+        } else if (_isFinalPosition) {
+          allCheckers[moves + 1].classList.add('kill');
+        }
       }
       if (
         allCheckers[moves + 1].getAttribute('name') != '' &&
         isBlack(allCheckers[moves + 1]) != _isBlack
       ) {
-        allCheckers[moves + 1].classList.add('kill');
+        if (allCheckers[moves + 1].getAttribute('name') === 'king' && _isFinalPosition) {
+          window.alert("check");
+          allCheckers[moves + 1].classList.add('kill');
+        } else if (_isFinalPosition) {
+          allCheckers[moves + 1].classList.add('kill');
+        }
       }
+
       // pawn has moved
       maxMoves = 1;
-      if (allCheckers[moves].getAttribute('name') === '')
+      if (allCheckers[moves].getAttribute('name') === '' && _isFinalPosition)
         allCheckers[moves].classList.add('possible-moves');
       disableBoxes();
       break;
@@ -164,99 +187,132 @@ var moves = (selectedPiece) => {
       verticalUp(currentPosition, _isBlack);
       verticalDown(currentPosition, _isBlack);
       horizontalRight(currentPosition, _isBlack);
-      horizontalLeft(currentPosition);
+      horizontalLeft(currentPosition, _isBlack);
       disableBoxes();
       break;
 
     case 'knight':
-      let left_Upper_Value = _isBlack
-        ? currentPosition - ((currentPosition % 8) - 1) + 16
-        : currentPosition - ((currentPosition % 8) - 1) - 16;
-      let possible_left_position = _isBlack
-        ? currentPosition + 16 - 1
-        : currentPosition - 16 - 1;
+      // Forward,Backward,side Movement
+      let forward_left =
+        (_isBlack ? currentPosition + 16 : currentPosition - 16) - 1;
+      let forward_right =
+        (_isBlack ? currentPosition + 16 : currentPosition - 16) + 1;
+      let bottom_left =
+        (_isBlack ? currentPosition - 16 : currentPosition + 16) - 1;
+      let bottom_right =
+        (_isBlack ? currentPosition - 16 : currentPosition + 16) + 1;
+      let right_side_up =
+        (_isBlack ? currentPosition + 8 : currentPosition - 8) + 2;
+      let right_side_down =
+        (_isBlack ? currentPosition - 8 : currentPosition + 8) + 2;
+      let left_side_up =
+        (_isBlack ? currentPosition + 8 : currentPosition - 8) - 2;
+      let left_side_down =
+        (_isBlack ? currentPosition - 8 : currentPosition + 8) - 2;
+      let _distance = currentPosition % 8;
 
-      let right_Upper_Value = _isBlack
-        ? currentPosition + ((currentPosition % 8) + 1) + 16
-        : currentPosition + ((currentPosition % 8) + 1) - 16;
-
-      let possible_right_position = _isBlack
-        ? currentPosition + 16 + 1
-        : currentPosition - 16 + 1;
-
-      // Left side movement
-      if (
-        possible_left_position >= 0 &&
-        possible_left_position <= 64 &&
-        possible_left_position >= left_Upper_Value
-      ) {
-        move_Kill(possible_left_position, isBlack);
+      // if the peice is at the extreme left
+      if (_distance === 0) {
+        move_Kill(forward_left, _isBlack, _isFinalPosition);
+        move_Kill(bottom_left, _isBlack, _isFinalPosition);
+        move_Kill(left_side_up, _isBlack, _isFinalPosition);
+        move_Kill(left_side_down, _isBlack, _isFinalPosition);
       }
-
-      // Right side movement
-      if (
-        possible_right_position >= 0 &&
-        possible_right_position <= 64 &&
-        possible_right_position <= right_Upper_Value
-      ) {
-        if (
-          allCheckers[possible_right_position - 1].getAttribute('name') === ''
-        ) {
-          allCheckers[possible_right_position - 1].classList.add(
-            'possible-moves'
-          );
-        } else if (
-          isBlack(allCheckers[possible_right_position - 1]) != _isBlack
-        ) {
-          allCheckers[possible_right_position - 1].classList.add('kill');
+      // if the peice is at the extreme right
+      else if (_distance === 1) {
+        move_Kill(forward_right, _isBlack, _isFinalPosition);
+        move_Kill(bottom_right, _isBlack, _isFinalPosition);
+        move_Kill(right_side_up, _isBlack, _isFinalPosition);
+        move_Kill(right_side_down, _isBlack, _isFinalPosition);
+      } else {
+        if (forward_left > 0 && forward_left < 64)
+          move_Kill(forward_left, _isBlack, _isFinalPosition);
+        if (forward_right > 0 && forward_right < 64)
+          move_Kill(forward_right, _isBlack, _isFinalPosition);
+        if (bottom_left > 0 && bottom_left < 64)
+          move_Kill(bottom_left, _isBlack, _isFinalPosition);
+        if (bottom_right > 0 && bottom_right < 64)
+          move_Kill(bottom_right, _isBlack, _isFinalPosition);
+        if (_distance < 7) {
+          if (right_side_up > 0 && right_side_up < 64) {
+            move_Kill(right_side_up, _isBlack, _isFinalPosition);
+          }
+          if (right_side_down > 0 && right_side_down < 64) {
+            move_Kill(right_side_down, _isBlack, _isFinalPosition);
+          }
+          if (left_side_up > 0 && left_side_up < 64 && _distance > 2) {
+            move_Kill(left_side_up, _isBlack, _isFinalPosition);
+          }
+          if (left_side_down > 0 && left_side_down < 64 && _distance > 2) {
+            move_Kill(left_side_down, _isBlack, _isFinalPosition);
+          }
         }
       }
+      disableBoxes();
+      break;
 
-      // side movement
-      let right_side_up = currentPosition + 2 - 8;
-      let right_side_down = currentPosition + 2 + 8;
-      let left_side_up = currentPosition - 2 - 8;
-      let left_side_down = currentPosition - 2 + 8;
-
-      // Right upper side movement
-      if (
-        right_side_up > 0 &&
-        right_side_up < 64 &&
-        right_side_up <= currentPosition + 1 + (currentPosition % 8) - 8
-      ) {
-        move_Kill(right_side_up, _isBlack);
-      }
-
-      // Right bottom side movement
-      if (
-        right_side_down > 0 &&
-        right_side_down < 64 &&
-        right_side_up <= currentPosition + 1 + (currentPosition % 8) + 8
-      ) {
-        move_Kill(right_side_down, _isBlack);
-      }
-
-      // Left upper side movement
-      if (
-        left_side_up > 0 &&
-        left_side_up < 64 &&
-        left_side_up >= currentPosition + 1 - (currentPosition % 8) - 8
-      ) {
-        move_Kill(left_side_up, _isBlack);
-      }
-
-      // Left bottom side movement
-      if (
-        left_side_down > 0 &&
-        left_side_down < 64 &&
-        left_side_down >= currentPosition + 1 - (currentPosition % 8) + 8
-      ) {
-        move_Kill(left_side_down, _isBlack);
-      }
+    case 'bishop':
+      diagonal(currentPosition, _isBlack, _isFinalPosition);
 
       disableBoxes();
       break;
+
+    case 'queen':
+      diagonal(currentPosition, _isBlack, _isFinalPosition);
+      verticalUp(currentPosition, _isBlack);
+      verticalDown(currentPosition, _isBlack);
+      horizontalRight(currentPosition, _isBlack);
+      horizontalLeft(currentPosition, _isBlack);
+      disableBoxes();
+      break;
+
+    case 'king':
+      let _Isblack = _isBlack ? 1 : -1;
+      let forward = currentPosition + 8 * _Isblack;
+      let _forward_left = currentPosition + 8 * _Isblack - 1;
+      let _forward_right = currentPosition + 8 * _Isblack + 1;
+      let side_left = currentPosition - _Isblack;
+      let side_right = currentPosition + _Isblack;
+      let backward = currentPosition + 8 * _Isblack;
+      let _backward_left = currentPosition - 8 * _Isblack - 1;
+      let _backward_right = currentPosition - 8 * _Isblack + 1;
+
+      // Forward movement
+      if (forward > 0 && forward < 64) {
+        move_Kill(forward, _isBlack, _isFinalPosition);
+      }
+      // Forward Left movement
+      if (_forward_left > 0 && _forward_left < 64) {
+        move_Kill(_forward_left, _isBlack, _isFinalPosition);
+      }
+      // Forward Right movement
+      if (_forward_right > 0 && _forward_right < 64) {
+        move_Kill(_forward_right, _isBlack, _isFinalPosition);
+      }
+      // Side-ways Left movement
+      if (side_left > 0 && side_left < 64) {
+        move_Kill(side_left, _isBlack, _isFinalPosition);
+      }
+      // Side-ways Right movement
+      if (side_right > 0 && side_right < 64) {
+        move_Kill(side_right, _isBlack, _isFinalPosition);
+      }
+      // Backward movement
+      if (backward > 0 && backward < 64) {
+        move_Kill(backward, _isBlack, _isFinalPosition);
+      }
+      // Backward Left movement
+      if (_backward_left > 0 && _backward_left < 64) {
+        move_Kill(_backward_left, _isBlack, _isFinalPosition);
+      }
+      // Backward Right movement
+      if (_backward_right > 0 && _backward_right < 64) {
+        move_Kill(_backward_right, _isBlack, _isFinalPosition);
+      }
+      disableBoxes();
+      break;
   }
+
 };
 
 // Check whether the piece is black or white
@@ -374,10 +430,161 @@ var horizontalLeft = (currentPosition, _isBlack) => {
 };
 
 // Move/Kills
-var move_Kill = (move, _isBlack) => {
-  if (allCheckers[move - 1].getAttribute('name') === '') {
-    allCheckers[move - 1].classList.add('possible-moves');
-  } else if (isBlack(allCheckers[move - 1]) != _isBlack) {
-    allCheckers[move - 1].classList.add('kill');
+var move_Kill = (move, _isBlack, _isFinalPosition) => {
+
+  if (_isFinalPosition) {
+    if (allCheckers[move - 1].getAttribute('name') === '') {
+      allCheckers[move - 1].classList.add('possible-moves');
+    } else if (isBlack(allCheckers[move - 1]) != _isBlack) {
+      allCheckers[move - 1].classList.add('kill');
+    }
+  } else {
+    if (allCheckers[move - 1].getAttribute('name') === 'king' && isBlack(allCheckers[move - 1]) != _isBlack) {
+      window.alert('check');
+      allCheckers[move - 1].classList.add('kill');
+    }
+  }
+
+};
+
+var diagonal = (currentPosition, _isBlack, _isFinalPosition) => {
+  let position_left = currentPosition % 8 === 0 ? 8 : currentPosition % 8;
+  let position_right = 8 - position_left;
+  let position = currentPosition;
+
+  // Right side diagonal up
+  while (position_right > 0) {
+    position = _isBlack ? position + 9 : position - 7;
+    if (position > 0 && position < 64) {
+      if (_isFinalPosition) {
+        if (
+          allCheckers[position - 1].getAttribute('name') !== '' &&
+          isBlack(allCheckers[position - 1]) === _isBlack
+        )
+          break;
+        if (allCheckers[position - 1].getAttribute('name') === '') {
+          allCheckers[position - 1].classList.add('possible-moves');
+        } else if (isBlack(allCheckers[position - 1]) != _isBlack) {
+          allCheckers[position - 1].classList.add('kill');
+          break;
+        }
+        position_right--;
+      } else {
+        if (allCheckers[position - 1].getAttribute('name') === 'king' && isBlack(allCheckers[position - 1]) != _isBlack) {
+          window.alert('check');
+          allCheckers[position - 1].classList.add('kill');
+        }
+        position_right--;
+      }
+    } else {
+      break;
+    }
+  }
+
+  position = _isBlack ? currentPosition - 9 : currentPosition + 7;
+
+  // Left side diagonal down
+  while (
+    position > 0 &&
+    position < 64 &&
+    (allCheckers[position - 1].getAttribute('name') === '' ||
+      isBlack(allCheckers[position - 1]) !== _isBlack)
+  ) {
+    if (position % 8 === 0) {
+      break;
+    } else {
+
+      if (_isFinalPosition) {
+        if (allCheckers[position - 1].getAttribute('name') === '') {
+          allCheckers[position - 1].classList.add('possible-moves');
+        } else if (isBlack(allCheckers[position - 1]) != _isBlack) {
+          allCheckers[position - 1].classList.add('kill');
+          break;
+        }
+      } else if (allCheckers[position - 1].getAttribute('name') === 'king' && isBlack(allCheckers[position - 1]) != _isBlack) {
+        window.alert('check');
+        allCheckers[position - 1].classList.add('kill');
+      }
+      position = _isBlack ? position - 9 : position + 7;
+    }
+  }
+
+  // Left side up
+  position = currentPosition;
+  while (position_left > 1) {
+    position = _isBlack ? position + 7 : position - 9;
+
+    if (position > 0 && position < 64) {
+      if (_isFinalPosition) {
+        if (
+          allCheckers[position - 1].getAttribute('name') !== '' &&
+          isBlack(allCheckers[position - 1]) === _isBlack
+        )
+          break;
+        if (allCheckers[position - 1].getAttribute('name') === '') {
+          allCheckers[position - 1].classList.add('possible-moves');
+        } else if (isBlack(allCheckers[position - 1]) != _isBlack) {
+          allCheckers[position - 1].classList.add('kill');
+          break;
+        }
+      } else {
+        if (allCheckers[position - 1].getAttribute('name') === 'king' && isBlack(allCheckers[position - 1]) != _isBlack) {
+          window.alert("check");
+          allCheckers[position - 1].classList.add('kill');
+        }
+      }
+
+      position_left--;
+    } else {
+      break;
+    }
+  }
+  position = _isBlack ? currentPosition - 7 : currentPosition + 9;
+
+  //Right side diagonal down
+  while (
+    position > 0 &&
+    position < 64 &&
+    (allCheckers[position - 1].getAttribute('name') === '' ||
+      isBlack(allCheckers[position - 1]) !== _isBlack)
+  ) {
+    if (_isFinalPosition) {
+      if (allCheckers[position - 1].getAttribute('name') === '') {
+        allCheckers[position - 1].classList.add('possible-moves');
+      } else if (isBlack(allCheckers[position - 1]) != _isBlack) {
+        allCheckers[position - 1].classList.add('kill');
+        break;
+      }
+    } else {
+      if (allCheckers[position - 1].getAttribute('name') === 'king' && isBlack(allCheckers[position - 1]) != _isBlack) {
+        window.alert("check");
+        allCheckers[position - 1].classList.add('kill');
+      }
+    }
+
+    if (position % 8 === 0) {
+      break;
+    }
+    position = _isBlack ? position - 7 : position + 9;
   }
 };
+
+// Win or Lose
+var winOrLose = () => {
+  var totalKings = document.querySelectorAll("div[name='king']");
+  if (totalKings.length < 2) {
+    window.alert((totalKings[0].classList[3]).toUpperCase() + " Wins");
+    location.reload()
+  }
+}
+
+// Changing  turn
+var turns = (e) => {
+  return e === 'white' ? 'black' : 'white'
+}
+
+// Disabling the black peices at the start of the game
+(Array.from(allCheckers).filter((row) =>
+  row.classList.contains('black')
+)).map((row) => row.classList.add('disable-box'));
+window.alert(_turn + " turn to play")
