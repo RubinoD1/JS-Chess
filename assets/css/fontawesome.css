@@ -42,8 +42,6 @@ body {
 .log {
   float: right;
   width:35%;
-  
-  
 }
 
 .bg {
@@ -56,19 +54,9 @@ body {
  background-repeat:no-repeat; 
 }
 
-
 .controls {
   text-align: center;
 }
-
-
-
-
-
-
-
-
-
 
 
 /* Arjun Classes */
@@ -91,7 +79,6 @@ body {
 @media screen and (max-width: 768px) {
  .square-style {
   width: 60px;
-  
  }
 }
 
