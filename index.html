@@ -23,7 +23,7 @@
 <body>
     <!-- Start page with play and settings buttons -->
     <div class="hero-image cointainer">
-        <div class="hero-text">
+        <div class="hero-text hidden">
           <h1>JS CHESS</h1>
           <p>A free-play chess app</p>
           <div class="d-grid gap-2 col-6 mx-auto">
@@ -32,7 +32,7 @@
             <button class="btn btn-secondary btn-md" type="button">Settings</button>
           </div>
           <!-- Footer for GitHub links -->
-          <footer id="footer" class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4  bg-secondary bg-gradient ">
+          <footer id="footer" class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 bg-secondary bg-gradient">
             <div class="col-md-4 d-flex align-items-center">
               <a href="https://github.com/RubinoD1" target="_blank" rel="noopener noreferrer" class="btn fa fa-github " role="button">
                 Daniel Rubino 
@@ -45,8 +45,64 @@
             </div>
           </footer>
         </div>
+        <!-- Settings menu --Hidden by default -->
+        <div class="hero-text ">
+          
+          <div class="text-center">
+            <img src="./assets/images/Design ideas/300x100 sample.png" class="rounded" alt="...">
+          </div>
+          <br>
+
+          <div class="btn-group-vertical gap-2 menu-btns " role="group" aria-label="...">
+      
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Side Select
+            </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">White (default)</a></li>
+                <li><a class="dropdown-item" href="#">Black</a></li>
+                <li><a class="dropdown-item" href="#">Random</a></li>
+              </ul>
+      
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Themes
+            </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Default</a></li>
+                <li><a class="dropdown-item" href="#">Coffee </a></li>
+                <li><a class="dropdown-item" href="#">Mint </a></li>
+              </ul>
+      
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Timer
+              </button>
+               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Unlimited (Default)</a></li>
+                <li><a class="dropdown-item" href="#">15 mins </a></li>
+                <li><a class="dropdown-item" href="#">30 mins </a></li>
+                <li><a class="dropdown-item" href="#">45 mins </a></li>
+                <li><a class="dropdown-item" href="#">1 hr </a></li>
+               </ul>
+      
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Notation
+              </button>
+               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Inside (default)</a></li>
+                <li><a class="dropdown-item" href="#">Border</a></li>
+                <li><a class="dropdown-item" href="#">None</a></li>
+               </ul>
+
+                      <!-- break to seperate settings and play button -->
+          <br>
+          <a href="./assets/html/fontawesome.html" class="btn btn-success btn-md" type="button">Play</a>
+        </div>
+          </div>
+   
         
       </div> 
+
+     
 
     <!-- Have settings menu hidden -->
 
