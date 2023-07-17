@@ -58,6 +58,10 @@ body {
   text-align: center;
 }
 
+.hidden {
+  visibility:hidden;
+}
+
 
 /* Arjun Classes */
 /* selected cell */

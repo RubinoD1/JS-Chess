@@ -13,6 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   
     <link rel="stylesheet" href="../css/fontawesome.css">
+    <link rel="stylesheet" href="../css/optionsMenu.css">
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 </head>
 <body>
@@ -350,8 +351,79 @@
 </div>
 
 
+ <!-- options menu --> 
+ <div id="options-window" class="border border-4 border-dark cointainer rounded-top hidden">
+   
+  <!-- close button -->
+  <button type="button" class="close btn btn-danger" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <!-- options title -->
+  <h2 id="options-title" class="text-center fa-solid fa-gear">
+    Settings
+  </h2>
+ 
+  <!-- break to force new line and create space between title and dropdown menu -->
+  <br>
+  <!-- options menu image -->
+  <img src="../images/Design ideas/200x200 sample.png" class=" rounded float-end img-thumbnail" alt="..."> 
+  
+  <!-- dropdown menus -->
+  <div class="btn-group-vertical gap-2 menu-btns " role="group" aria-label="...">
+    
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Side Select
+    </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">White (default)</a></li>
+        <li><a class="dropdown-item" href="#">Black</a></li>
+        <li><a class="dropdown-item" href="#">Random</a></li>
+      </ul>
 
-      <!-- JS file -->
-      <script src="../js/script.js"></script>
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Themes
+    </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Default</a></li>
+        <li><a class="dropdown-item" href="#">Coffee </a></li>
+        <li><a class="dropdown-item" href="#">Mint </a></li>
+      </ul>
+
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Timer
+      </button>
+       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Unlimited (Default)</a></li>
+        <li><a class="dropdown-item" href="#">15 mins </a></li>
+        <li><a class="dropdown-item" href="#">30 mins </a></li>
+        <li><a class="dropdown-item" href="#">45 mins </a></li>
+        <li><a class="dropdown-item" href="#">1 hr </a></li>
+       </ul>
+
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Notation
+      </button>
+       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Inside (default)</a></li>
+        <li><a class="dropdown-item" href="#">Border</a></li>
+        <li><a class="dropdown-item" href="#">None</a></li>
+       </ul>
+    </div>
+     <!-- Break to force new line and create space between dropdown menus and buttons-->
+     <br>
+    <!-- HAVE HIDDEN UNTILL A CHANGE IS MADE BY USER -->
+    <div class="btn-group btn-group-md gap-2 settings-confirm" role="group" aria-label="...">
+      <button type="button" class="btn btn-secondary">Cancel</button>
+      <button type="button" class="btn btn-warning">Save</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- JS files -->
+  <script src="../js/script.js"></script>
+  <script src="../js/optionsMenu.js"></script>
+
 </body>
 </html>

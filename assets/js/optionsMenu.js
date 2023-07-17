@@ -1,10 +1,10 @@
 //DOM elements 
 const optionsButton = document.getElementById("options-button"); //options button (in-game settings) 
- //options menu
+const optionsMenu = document.getElementById("options-window"); //options menu
 
 //hides homepage and unhides the settings menu 
 optionsButton.addEventListener("click", function(){
-    settings.classList.remove("hidden"); //unhide options by removing the hidden class 
+    optionsMenu.classList.remove("hidden"); //unhide options by removing the hidden class 
 });
 
 
