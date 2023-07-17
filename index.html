@@ -23,13 +23,20 @@
 <body>
     <!-- Start page with play and settings buttons -->
     <div class="hero-image cointainer">
-        <div class="hero-text hidden">
-          <h1>JS CHESS</h1>
-          <p>A free-play chess app</p>
+        <div class="hero-text" id="homepage">
+          <h1>
+            JS CHESS
+          </h1>
+          <p>
+            A free-play chess app
+          </p>
           <div class="d-grid gap-2 col-6 mx-auto">
-            <!-- Fix link to board after replacing index.html -->
-            <a href="./assets/html/fontawesome.html" class="btn btn-success btn-md" type="button">Play</a>
-            <button class="btn btn-secondary btn-md" type="button">Settings</button>
+            <a href="./assets/html/fontawesome.html" class="btn btn-success btn-md" type="button">
+              Play
+            </a>
+            <button class="btn btn-secondary btn-md" id="settings-button" type="button">
+              Settings
+            </button>
           </div>
           <!-- Footer for GitHub links -->
           <footer id="footer" class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 bg-secondary bg-gradient">
@@ -45,12 +52,13 @@
             </div>
           </footer>
         </div>
+        
         <!-- Settings menu --Hidden by default -->
-        <div class="hero-text ">
-          
+        <div class="hero-text hidden" id="settings">
           <div class="text-center">
             <img src="./assets/images/Design ideas/300x100 sample.png" class="rounded" alt="...">
           </div>
+          <!-- break to seperate image from dropdown menus -->
           <br>
 
           <div class="btn-group-vertical gap-2 menu-btns " role="group" aria-label="...">
@@ -93,33 +101,14 @@
                 <li><a class="dropdown-item" href="#">None</a></li>
                </ul>
 
-                      <!-- break to seperate settings and play button -->
+          <!-- break to seperate settings and play button -->
           <br>
           <a href="./assets/html/fontawesome.html" class="btn btn-success btn-md" type="button">Play</a>
         </div>
-          </div>
-   
-        
-      </div> 
-
-     
-
-    <!-- Have settings menu hidden -->
-
-    
-    
-
-
-    
-<!-- Reference for footer 
-<footer class="footer">
-  <a href="https://github.com/RubinoD1" target="_blank" rel="noopener noreferrer" class="btn .btn-lg btn-outline-danger fa fa-github fa-2x" role="button">
-    See All Projects
-  </a>
-</footer> 
--->
+      </div>
+    </div> 
 
  <!-- JS file for settings menu -->
- <script src="../js/optionsMenu.js"></script>
+ <script src="./assets/js/homepage.js"></script>
 </body>
 </html>
